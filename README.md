@@ -1,3 +1,10 @@
+dusjagr is experimenting to use this as a library... comparing it to other verions of using the QTouchADC. And hopefully make it compatible to attiny85 sooon.
+
+library is working fine now.
+
+
+#Below is the original README
+
 This very simple sketch shows how to implement a so called *QTouch ADC* one wire touch button.
 
 # Intro
