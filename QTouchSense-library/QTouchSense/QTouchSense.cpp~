@@ -3,7 +3,7 @@
 
 void QTouchSenseClass::settings()
 {
-#define CHARGE_DELAY  10 // time it takes for the capacitor to get charged/discharged in microseconds
+#define CHARGE_DELAY  5 // time it takes for the capacitor to get charged/discharged in microseconds
 #define TRANSFER_DELAY  5 // time it takes for the capacitors to exchange charge
 
 #define ADMUX_MASK  0b00001111 // mask the mux bits in the ADMUX register
