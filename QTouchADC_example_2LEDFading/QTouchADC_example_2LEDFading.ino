@@ -1,6 +1,6 @@
-#include <QTouchSense.h>
+#include <QTouchADCduino.h>
 
-int RefPin  = 0;
+int refPin  = 0;
 int value1 = 0;
 int value2 = 0;
 int ref1 = 0;
@@ -12,9 +12,9 @@ const uint16_t ledFadeTable[32] = {0, 0, 0, 1, 1, 2, 3, 3, 4, 5, 6, 7, 9, 10, 12
 void setup() {
 
   Serial.begin(115200);
-  QTouchSense.settings();
-  ref1 = QTouchSense.sense(1, RefPin, 64);
-  ref2 = QTouchSense.sense(2, RefPin, 64);
+  QTouchADCduino.init();
+  ref1 = QTouchADCduino.sense(1, refPin, 64);
+  ref2 = QTouchADCduino.sense(2, refPin, 64);
   
 }
 
@@ -22,13 +22,13 @@ void loop() {
   unsigned long time;
   time= micros();
   
-  value1 = (ref1 - QTouchSense.sense(1, RefPin, 8));
+  value1 = (QTouchADCduino.sense(1, refPin, 20) - ref1);
   time= micros() - time;
-  value2 = (ref2 - QTouchSense.sense(2, RefPin, 8));
+  value2 = (QTouchADCduino.sense(2, refPin, 20) - ref1);
   
   idx= (value1); // offset probe_val by value of untouched probe
   if(idx<0) idx= 0; // limit the index!!!
-  idx/= 1; // scale the index
+  idx/= 5; // scale the index
   if(idx>31) idx= 31; // limit the index!!!
   
   analogWrite(9, ledFadeTable[idx]);
