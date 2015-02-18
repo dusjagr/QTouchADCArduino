@@ -72,7 +72,7 @@ for (int i=0; i<samples; i++) // Repeat the measurement between 1 - 60 times and
   adc1 /= samples; // divide the accumulated measurements by number of samples
   adc2 /= samples;
 
-  return adc1 - adc2; // return conversion result
+  return adc2 - adc1; // return conversion result
 }
 
 QTouchADCduinoClass QTouchADCduino;
