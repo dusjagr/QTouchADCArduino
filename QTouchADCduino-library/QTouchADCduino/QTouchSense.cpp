@@ -1,7 +1,7 @@
 #include "Arduino.h"
-#include "QTouchSense.h"
+#include "QTouchADCduino.h"
 
-void QTouchSenseClass::settings()
+void QTouchADCduinoClass::init()
 {
 #define CHARGE_DELAY  10 // time it takes for the capacitor to get charged/discharged in microseconds
 #define TRANSFER_DELAY  5 // time it takes for the capacitors to exchange charge
@@ -21,7 +21,7 @@ return;
 }
 
 
-uint16_t QTouchSenseClass::sense(byte ADCReadPin, byte ADCRef, int samples)
+uint16_t QTouchADCduinoClass::sense(byte ADCReadPin, byte ADCRef, int samples)
 {   
     unsigned int adc1 = 0;
     unsigned int adc2 = 0;
@@ -75,4 +75,4 @@ for (int i=0; i<samples; i++) // Repeat the measurement between 1 - 60 times and
   return adc1 - adc2; // return conversion result
 }
 
-QTouchSenseClass QTouchSense;
+QTouchADCduinoClass QTouchADCduino;
